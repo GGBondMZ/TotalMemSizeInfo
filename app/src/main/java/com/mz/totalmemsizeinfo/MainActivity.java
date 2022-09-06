@@ -19,9 +19,10 @@ import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String TAG = "MAZHUANG";
+    private static String TAG = "MAZHUANG";
 
     private TextView sizeTxt;
+    private TextView memTxt;
 
     private Context mContext;
 
@@ -35,8 +36,13 @@ public class MainActivity extends AppCompatActivity {
         mContext = MainActivity.this;
 
         sizeTxt = findViewById(R.id.sizeTxt);
+        memTxt = findViewById(R.id.memTxt);
 
         queryStorageSize();
+
+        String totalMemory = "" + SystemMemory.getTotalMemory(this);
+        memTxt.setText("运行内存总大小 = " + totalMemory);
+        Log.d(TAG, "totalMemory = " + totalMemory);
     }
 
     private void queryStorageSize() {
@@ -52,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (type == 1) {
                     long totalSize = 0L;
-                    //获取内置内存总大小
+                    // 获取内置内存总大小
                     unit = 1000;
                     Method getFsUuid = obj.getClass().getDeclaredMethod("getFsUuid");
                     String fsUuid = (String) getFsUuid.invoke(obj);
@@ -73,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                 } else if (type == 0) {
-                    //外置存储
+                    // 外置存储
                     Method isMountedReadable = obj.getClass().getDeclaredMethod("isMountedReadable");
                     boolean readable = (boolean) isMountedReadable.invoke(obj);
                     if (readable) {
