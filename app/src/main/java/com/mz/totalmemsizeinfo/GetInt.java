@@ -16,7 +16,6 @@ public class GetInt {
         return Integer.parseInt(bd.toString());
     }
 
-
     /**
      * （2）四舍五入把double转化为int类型整数,0.5也舍去,0.51进一
      *
@@ -28,7 +27,6 @@ public class GetInt {
         return Integer.parseInt(df.format(dou));
     }
 
-
     /**
      * （3）去掉小数凑整:不管小数是多少，都进一
      *
@@ -38,6 +36,4 @@ public class GetInt {
     public static int ceilInt(double number) {
         return (int) Math.ceil(number);
     }
-
-
 }

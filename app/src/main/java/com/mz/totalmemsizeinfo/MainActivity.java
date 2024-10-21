@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
     private int unit = 1000;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         queryStorageSize();
 
         String totalMemory = "" + SystemMemory.getTotalMemory(this);
-        memTxt.setText("运行内存总大小 = " + totalMemory);
+        memTxt.setText("运行内存总大小 = " + totalMemory + " GB");
         Log.d(TAG, "totalMemory = " + totalMemory);
     }
 
@@ -131,6 +130,4 @@ public class MainActivity extends AppCompatActivity {
         }
         return String.format(Locale.getDefault(), " %.2f %s", size, units[index]);
     }
-
-
 }

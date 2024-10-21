@@ -59,5 +59,4 @@ public class SystemMemory {
         }
         return initial_memory_int;
     }
-
 }
